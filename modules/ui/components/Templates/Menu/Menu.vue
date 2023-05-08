@@ -174,22 +174,22 @@ function onDragStart(event: DragEvent) {
 @import '@UI/assets/scss/variable';
 
 .icon-container {
-  border: 1px solid rgb(255, 255, 225);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 50px 10px 60px;
+  border: 1px solid rgb(255, 255, 225);
   background: rgb(255, 255, 255);
-  padding: 50px 10px 60px 10px;
 }
 
 .nav-sections {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
-  grid-gap: 10px;
-  justify-items: center;
   align-items: center;
   margin-top: 10px;
+  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+  justify-items: center;
 }
 
 .nav-sections__item {
@@ -201,6 +201,7 @@ function onDragStart(event: DragEvent) {
   width: 60px;
   height: 30px;
 }
+
 .nav__icon {
   width: 80px;
   height: 40px;
@@ -208,18 +209,19 @@ function onDragStart(event: DragEvent) {
 }
 
 .label-class {
-  font-size: 11px;
   color: #595c5f;
+  font-size: 11px;
   line-height: 1;
 }
 
 .menu.ant-menu-gray {
   background-color: #f7f7f7;
 }
+
 .menu-item {
   display: inline-block;
-  margin-right: 10px; /* vous pouvez ajuster ce nombre pour définir l'espace entre les éléments de menu */
   height: 80px !important;
+  margin-right: 10px; /* vous pouvez ajuster ce nombre pour définir l'espace entre les éléments de menu */
 }
 
 // .email-structure {
@@ -227,8 +229,8 @@ function onDragStart(event: DragEvent) {
 // }
 .drag{
   display:flex;
+  height: 100vh;
   flex-direction: column;
   overflow-y: scroll;
-  height: 100vh;
 }
 </style>

@@ -452,18 +452,9 @@ span.ant-radio + * {
 .ant-popover-message-title {
   max-width: 300px;
 }
-.ant-menu-vertical{
-  
-    .ant-menu-item {
-      min-height:80px ;
-    }
+
+.ant-menu-vertical {
+  .ant-menu-item {
+    min-height: 80px;
   }
-  
-  .drag{
-    
-.ant-col
-  {
-    position: absolute;
-    min-height:auto ;
-}
 }
