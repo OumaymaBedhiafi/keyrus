@@ -1,0 +1,290 @@
+[
+  {
+    "organismName": "section",
+    "image": "section",
+    "sections": [
+      {
+        "name": "2 columns",
+        "image": "iconTest",
+        "column": "2",
+        "addedComponents": [[], []],
+        "deletable": true,
+        "span": "12"
+      },
+      {
+        "name": "3 columns",
+        "organismName": "section",
+        "image": "icon3",
+        "column": "3",
+        "addedComponents": [[], [], []],
+        "deletable": true,
+        "span": "8"
+      },
+      {
+        "name": "4 columns",
+        "organismName": "section",
+        "image": "icon4",
+        "column": "4",
+        "addedComponents": [[], [], [], []],
+        "deletable": true,
+        "span": "6"
+      },
+      {
+        "name": "5 columns",
+        "organismName": "section",
+        "image": "icon5",
+        "column": "5",
+        "addedComponents": [[], [], [], [], []],
+        "deletable": true
+      },
+      {
+        "name": "2 Columns (2:1)",
+        "organismName": "section",
+        "image": "iconcol1",
+
+        "column": "2-1-3",
+        "addedComponents": [[], []],
+        "deletable": true
+      },
+      {
+        "name": "2 Columns (1:2)",
+        "image": "iconcol3",
+        "column": "2-3-1",
+        "addedComponents": [[], []],
+        "deletable": true
+      }
+    ]
+  },
+
+  {
+    "organismName": "descreption",
+    "sectionTitle": "sectionTitle",
+    "org_name": "ttttt",
+    "image": "descreption",
+    "componentProperty": "element2-property",
+
+    "addedComponents": [],
+    "isSelected": false,
+    "items": {
+      "title": "title",
+      "subtitle": "subtitle",
+      "coverImageUrl": ""
+    }
+  },
+  {
+    "organismName": "element2",
+    "sectionTitle": "sectionTitle",
+    "org_name": "ttttt",
+    "image": "temp1",
+    "componentProperty": "element2-property",
+
+    "addedComponents": [],
+    "isSelected": false,
+    "items": {
+      "title": "title",
+      "subtitle": "subtitle",
+      "coverImageUrl": ""
+    }
+  },
+  {
+    "organismName": "carousel1",
+    "sectionTitle": "sectionTitle",
+    "org_name": "ttttt",
+    "image": "card1",
+
+    "componentProperty": "element2-property",
+
+    "addedComponents": [],
+    "isSelected": false,
+    "items": {
+      "title": "title",
+      "subtitle": "subtitle",
+      "coverImageUrl": ""
+    }
+  },
+  {
+    "organismName": "carousel",
+    "sectionTitle": "sectionTitle",
+    "org_name": "ttttt",
+    "image": "carousel",
+    "componentProperty": "element2-property",
+
+    "addedComponents": [],
+    "isSelected": false,
+    "items": {
+      "title": "title",
+      "subtitle": "subtitle",
+      "coverImageUrl": ""
+    }
+  },
+  {
+    "organismName": "carousel2",
+    "sectionTitle": "sectionTitle",
+    "org_name": "ttttt",
+    "image": "carousel1",
+    "componentProperty": "element2-property",
+
+    "addedComponents": [],
+    "isSelected": false,
+    "items": {
+      "title": "title",
+      "subtitle": "subtitle",
+      "coverImageUrl": ""
+    }
+  },
+
+  {
+    "organismName": "ratings",
+    "image": "rating",
+    "addedComponents": []
+  },
+
+  {
+    "organismName": "story",
+    "image": "Story",
+
+    "addedComponents": []
+  },
+  {
+    "name": "templ",
+    "organismName": "templ",
+    "image": "tem",
+
+    "addedComponents": []
+  },
+  {
+    "name": "element1",
+    "organismName": "element1",
+    "image": "cadre",
+
+    "addedComponents": []
+  },
+  {
+    "name": "card",
+    "organismName": "card",
+    "componentProperty": "element2-property",
+    "icon": ["fas", "stop"],
+    "addedComponents": [],
+    "isSelected": false,
+    "items": {
+      "title": "title",
+      "value": "value",
+      "key": "key"
+    }
+  },
+  {
+    "name": "Button",
+    "organismName": "Button",
+    "componentProperty": "button-property",
+    "icon": ["fas", "stop"],
+    "addedComponents": [],
+    "isSelected": false,
+    "items": {
+      "content": "Button",
+      "link_to": "",
+      "button_type": "button",
+      "button_style": "",
+      "button_color": "#0143a3",
+      "text_color": "#FFFFFF",
+      "rounded_corners": 0,
+      "button_size_type": "auto",
+      "button_size": 100,
+      "font_family": "'Helvetica Neue', Helvetica, sans-serif",
+      "font_size": 16,
+      "font_bold": false,
+      "font_italic": false,
+      "line_height": 1.5,
+      "height": 30,
+      "alignment": "center",
+      "vertical_align": "middle",
+      "box_shadow_color": "",
+      "gradient_top_color": "",
+      "gradient_bottom_color": ""
+    },
+    "componentSettings": {
+      "background_color": "",
+      "rounded_corners": 0,
+      "padding_top": 10,
+      "padding_right": 0,
+      "padding_bottom": 10,
+      "padding_left": 0,
+      "height": 0,
+      "deletable": true,
+      "type": "text"
+    }
+  },
+
+  {
+    "name": "Input",
+    "organismName": "input",
+    "componentProperty": "button-property",
+    "icon": ["fas", "image"],
+    "addedComponents": [],
+    "items": {
+      "label": "Input label",
+      "field_name": null,
+      "is_required": false,
+      "show_label": true,
+      "placeholder_text": "Placeholder text"
+    },
+    "deletable": true,
+    "type": "text",
+    "isSelected": false
+  },
+
+  {
+    "organismName": "section",
+    "sections": [
+      {
+        "name": "2 columns",
+        "image": "iconTest",
+        "column": "2",
+        "addedComponents": [[], []],
+        "deletable": true,
+        "span": "12"
+      },
+      {
+        "name": "3 columns",
+        "organismName": "section",
+        "image": "icon3",
+        "column": "3",
+        "addedComponents": [[], [], []],
+        "deletable": true,
+        "span": "8"
+      },
+      {
+        "name": "4 columns",
+        "organismName": "section",
+        "image": "icon4",
+        "column": "4",
+        "addedComponents": [[], [], [], []],
+        "deletable": true,
+        "span": "6"
+      },
+      {
+        "name": "5 columns",
+        "organismName": "section",
+        "image": "icon5",
+        "column": "5",
+        "addedComponents": [[], [], [], [], []],
+        "deletable": true
+      },
+      {
+        "name": "2 Columns (2:1)",
+        "organismName": "section",
+        "image": "iconcol1",
+
+        "column": "2-1-3",
+        "addedComponents": [[], []],
+        "deletable": true
+      },
+      {
+        "name": "2 Columns (1:2)",
+        "image": "iconcol3",
+        "column": "2-3-1",
+        "addedComponents": [[], []],
+        "deletable": true
+      }
+    ]
+  }
+]

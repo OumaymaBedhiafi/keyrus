@@ -1,0 +1,18 @@
+[ 
+  {
+    "organismName":"element2",
+    "org":{
+  "organismName":"ttttt",
+    "organisme": {
+    "cover": {"type":"{{cover.type}}","value":"{{cover.value}}"},
+    "thumbnail": {"type":"{{thumbnail.type}}","value":"{{thumbnail.value}}"},
+    "title": "{{title}}",
+    "subTitle": "{{subTitle}}",
+    "destinationModel":{
+      "screenName":"{{destinationModel.screenName}}",
+      "entityType":"{{destinationModel.entityType}}",
+      "itemId":"{{destinationModel.itemId}}",
+      "destinationType":"{{destinationModel.destiinationType}}",
+      "routeName":"{{destinationModel.routeName}}"}}
+    }}
+  ]
