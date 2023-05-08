@@ -11,29 +11,51 @@
       <template
         #item="{ element: nav }"
       >
-        <div
-          v-if="nav.organismName !=='section'"
-        >
+        <div>
+          <div
+            v-if="nav.organismName !=='section'"
+            
+            class="icon-container"
+          >
           <a-popover placement="right">
-            <template #content>
-              <div
-         
-          
-                class="icon-container" 
-              >
+              <template #content>
+                <draggable
+                  :clone="clone"
+                  
+                  :list="[nav]"
+                  :sort="false"
+                  :group="{ name: 'oum', pull: 'clone', put: false }"
+                  item-key="id1"
+                >
+                  <template
+                    #item="{ elm }"
+                  >
+                    <div class="nav-sections"> 
+                      <div
+                         
+                        class="nav-sections__item"
+                      >
+                        <img
+                          :src="navIcons[nav.image]"
+                          class="nav-sections__icon"
+                        >
+                      </div>
+                    </div>
+                  </template>
+                </draggable>
+              </template>
+              <template #title>
+                <span>Add New Section</span>
+              </template>
+              <div class="icon-container">
                 <img
                   :src="navIcons[nav.image]"
                   class="nav__icon"
                 >
-
-                <span class="label-class"> {{ $t(nav.organismName) }} </span>
+                <span class="label-class">{{ $t(nav.organismName) }}</span>
               </div>
-            </template>
-          </a-popover>
-        </div>
-              
-         
-       
+            </a-popover>
+          </div>
 
 
 
@@ -45,48 +67,65 @@
 
 
 
-        <div v-if="nav.organismName === 'section'">
-          <a-popover placement="right">
-            <template #content>
-              <draggable
-                :clone="clone"
-                 
-                :list="nav.sections"
-                :sort="false"
-                :group="{ name: 'oum', pull: 'clone', put: false }"
-                item-key="id1"
-              >
-                <template #item="{ element }">
-                  <div class="nav-sections">
-                    <div class="nav-sections__item">
-                      <img
-                        :src="navIcons[element.image]"
-                        class="nav-sections__icon"
+
+
+
+
+
+
+
+          
+          <div
+            v-if="nav.organismName ==='section'"
+          >
+            <a-popover placement="right">
+              <template #content>
+                <draggable
+                  :clone="clone"
+                  
+                  :list="nav.sections"
+                  :sort="false"
+                  :group="{ name: 'oum', pull: 'clone', put: false }"
+                  item-key="id1"
+                >
+                  <template
+                    #item="{ element }"
+                  >
+                    <div class="nav-sections"> 
+                      <div
+                         
+                        class="nav-sections__item"
                       >
+                        <img
+                          :src="navIcons[element.image]"
+                          class="nav-sections__icon"
+                        >
+                      </div>
                     </div>
-                  </div>
-                </template>
-              </draggable>
-            </template>
-            <template #title>
-              <span>Add New Section</span>
-            </template>
-            <div class="icon-container">
-              <img
-                :src="navIcons[nav.image]"
-                class="nav__icon"
-              >
-              <span class="label-class">{{ $t(nav.organismName) }}</span>
-            </div>
-          </a-popover>
+                  </template>
+                </draggable>
+              </template>
+              <template #title>
+                <span>Add New Section</span>
+              </template>
+              <div class="icon-container">
+                <img
+                  :src="navIcons[nav.image]"
+                  class="nav__icon"
+                >
+                <span class="label-class">{{ $t(nav.organismName) }}</span>
+              </div>
+            </a-popover>
+          </div>
         </div>
       </template>
     </draggable>
   </div>
 </template>
-    </draggable>
-  </div>
-</template>
+   
+   
+  
+    
 
 <script lang="ts" setup>
 import { v4 as uuidv4 } from 'uuid';
