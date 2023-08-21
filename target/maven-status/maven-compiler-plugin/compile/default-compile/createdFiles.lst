@@ -1,0 +1,8 @@
+com\keyrus\of\resource\ScreenResource.class
+com\keyrus\of\model\Screen.class
+com\keyrus\of\repository\ScreenRepository.class
+com\keyrus\of\service\ScreenService.class
+com\keyrus\of\model\Items.class
+META-INF\panache-archive.marker
+com\keyrus\of\model\User.class
+com\keyrus\of\model\AddedComponents.class
