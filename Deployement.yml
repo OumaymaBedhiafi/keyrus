@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: appbuilder-application-service
+  labels:
+    app: appbuilder-application-service
+spec:
+  replicas:1
+  selector:
+    matchLabels:
+      app: appbuilder-application-service
+  template:
+    metadata:
+      labels:
+        app: appbuilder-application-service
+    spec:
+      containers:
+      - name: appbuilder-application-service
+        image: oumaima12/application_service
+        ports:
+        - containerPort: 8097
