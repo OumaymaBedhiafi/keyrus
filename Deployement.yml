@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: appbuilder-application-service
-        image: oumaima12/application_service
+        image: oumaima12/application_service:replaceImageTag
         ports:
         - containerPort: 8097
