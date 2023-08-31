@@ -5,7 +5,7 @@ metadata:
   labels:
     app: appbuilder-application-service
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: appbuilder-application-service
