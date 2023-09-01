@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: appbuilder-screen-service
+  name: app-builder-frontend
   labels:
-    app: appbuilder-screen-service
+    app: app-builder-frontend
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: appbuilder-screen-service
+      app: app-builder-frontend
   template:
     metadata:
       labels:
-        app: appbuilder-screen-service
+        app: app-builder-frontend
     spec:
       containers:
-      - name: appbuilder-screen-service
-        image: oumaima12/screen-service
+      - name: app-builder-frontend
+        image: oumaima12/app-builder-frontend
         ports:
         - containerPort: 80
