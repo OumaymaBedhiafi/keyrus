@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: appbuilder-keycloak-service
+  labels:
+    app: appbuilder-keycloak-service
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: appbuilder-keycloak-service
+  template:
+    metadata:
+      labels:
+        app: appbuilder-keycloak-service
+    spec:
+      containers:
+      - name: appbuilder-keycloak-service
+        image: oumaima12/keycloak_service
+        ports:
+        - containerPort: 8099
