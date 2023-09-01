@@ -1,4 +1,4 @@
 # Dossiers à exclure
 node_modules/
 dist/
-build/
+build/git 
