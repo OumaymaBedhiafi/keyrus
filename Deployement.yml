@@ -18,4 +18,4 @@ spec:
       - name: appbuilder-keycloak-service
         image: oumaima12/keycloak_service
         ports:
-        - containerPort: 8099
+        - containerPort: 8096
