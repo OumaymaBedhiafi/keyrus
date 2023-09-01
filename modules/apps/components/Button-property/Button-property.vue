@@ -301,8 +301,9 @@ export default defineComponent({
 </script> 
 
 
+<!-- 
 
-     <style lang="less" scoped>
+  <style lang="less" scoped>
      @import 'ant-design-vue/dist/antd.css';
      @import 'ant-design-vue/lib/button/style/index.less';
      @import 'ant-design-vue/lib/Icon/style/index.less';
@@ -314,7 +315,7 @@ export default defineComponent({
      @import 'ant-design-vue/lib/input-number/style/index.less';
  
      
-     </style>
+     </style> -->
  
  
  
@@ -350,4 +351,4 @@ export default defineComponent({
 .button-style.btn-raised {
   background-image: url(/assets/svg/btn-raised.svg);
 }
-</style>
+</style> 

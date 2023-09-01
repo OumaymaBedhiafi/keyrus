@@ -1,40 +1,41 @@
 <template>
   <div class="drag">
+    <a-input-search
+      v-model:value="value"
+      placeholder="search"
+      enter-button
+      class="search-input"
+      @search="onSearch"
+    />
+
     <draggable
       :clone="clone"
-      
-      :list="navTree"
+      :list="filteredNav"
       :sort="false"
       :group="{ name: 'oum', pull: 'clone', put: false }"
       item-key="id"
     >
-      <template
-        #item="{ element: nav }"
-      >
-        <div>
+      <template #item="{ element: nav }">
+        <div
+          :key="nav.organismName"
+          class="display-item"
+        >
           <div
-            v-if="nav.organismName !=='section'"
-            
+            v-if="nav.organismName !== 'section'"
             class="icon-container"
           >
-          <a-popover placement="right">
+            <a-popover placement="right">
               <template #content>
                 <draggable
                   :clone="clone"
-                  
                   :list="[nav]"
                   :sort="false"
                   :group="{ name: 'oum', pull: 'clone', put: false }"
                   item-key="id1"
                 >
-                  <template
-                    #item="{ elm }"
-                  >
-                    <div class="nav-sections"> 
-                      <div
-                         
-                        class="nav-sections__item"
-                      >
+                  <template #item="{ elm }">
+                    <div class="nav-sections">
+                      <div class="nav-sections__item">
                         <img
                           :src="navIcons[nav.image]"
                           class="nav-sections__icon"
@@ -44,9 +45,7 @@
                   </template>
                 </draggable>
               </template>
-              <template #title>
-                <span>Add New Section</span>
-              </template>
+
               <div class="icon-container">
                 <img
                   :src="navIcons[nav.image]"
@@ -57,53 +56,31 @@
             </a-popover>
           </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-          
           <div
-            v-if="nav.organismName ==='section'"
+            v-if="nav.organismName === 'section'"
+            class="icon-container"
           >
-            <a-popover placement="right">
+            <a-popover
+              placement="right"
+              class="test"
+            >
               <template #content>
-                <draggable
-                  :clone="clone"
-                  
-                  :list="nav.sections"
-                  :sort="false"
-                  :group="{ name: 'oum', pull: 'clone', put: false }"
-                  item-key="id1"
-                >
-                  <template
-                    #item="{ element }"
+                <div class="items-container">
+                  <draggable
+                    :clone="clone"
+                    :list="nav.sections"
+                    :sort="false"
+                    :group="{ name: 'oum', pull: 'clone', put: false }"
+                    item-key="id1"
                   >
-                    <div class="nav-sections"> 
-                      <div
-                         
-                        class="nav-sections__item"
+                    <template #item="{ element }">
+                      <img
+                        :src="navIcons[element.image]"
+                        class="section-item-img"
                       >
-                        <img
-                          :src="navIcons[element.image]"
-                          class="nav-sections__icon"
-                        >
-                      </div>
-                    </div>
-                  </template>
-                </draggable>
+                    </template>
+                  </draggable>
+                </div>
               </template>
               <template #title>
                 <span>Add New Section</span>
@@ -122,17 +99,11 @@
     </draggable>
   </div>
 </template>
-   
-   
-  
-    
 
 <script lang="ts" setup>
+import nav from '~~/assets/data/nav.json';
 import { v4 as uuidv4 } from 'uuid';
 import { cloneDeep } from 'lodash';
-import nav from '~~/assets/data/nav.json';
-
-console.log('helldddddddddddo');
 
 defineProps({
   collapsed: {
@@ -144,6 +115,16 @@ defineProps({
       return [];
     },
   },
+});
+
+const value = ref('');
+
+const filteredNav = computed(() => {
+  const searchValue = value.value.toLowerCase();
+
+  return nav.filter((nav) => {
+    return nav.organismName.toLowerCase().includes(searchValue);
+  });
 });
 
 const clone = (component) => {
@@ -174,22 +155,25 @@ function onDragStart(event: DragEvent) {
 @import '@UI/assets/scss/variable';
 
 .icon-container {
+  // border: 1px solid rgb(255, 255, 225);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 50px 10px 60px;
-  border: 1px solid rgb(255, 255, 225);
   background: rgb(255, 255, 255);
+  // margin: 6px;
+  // padding:13px 20px ;
+  border-radius: 14px;
+  height: 150px;
 }
 
 .nav-sections {
   display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+  grid-gap: 10px;
+  justify-items: center;
   align-items: center;
   margin-top: 10px;
-  grid-gap: 10px;
-  grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
-  justify-items: center;
 }
 
 .nav-sections__item {
@@ -198,39 +182,49 @@ function onDragStart(event: DragEvent) {
 }
 
 .nav-sections__icon {
-  width: 60px;
-  height: 30px;
+  width: 200px;
 }
-
 .nav__icon {
-  width: 80px;
-  height: 40px;
-  line-height: 1;
+  width: 110px;
+  height: 95px;
 }
 
 .label-class {
-  color: #595c5f;
   font-size: 11px;
-  line-height: 1;
+  color: #595c5f;
+  line-height: 3;
 }
-
-.menu.ant-menu-gray {
-  background-color: #f7f7f7;
-}
-
-.menu-item {
+.display-item {
+  width: 125px;
   display: inline-block;
-  height: 80px !important;
-  margin-right: 10px; /* vous pouvez ajuster ce nombre pour définir l'espace entre les éléments de menu */
+  height: 150px;
+  margin: 5px;
 }
 
 // .email-structure {
 //   min-height: 100%;
 // }
-.drag{
-  display:flex;
-  height: 100vh;
+.drag {
+  display: flex;
   flex-direction: column;
   overflow-y: scroll;
+  height: 100vh;
+  width: 290px;
+}
+
+.items-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 380px;
+}
+
+.section-item-img {
+  width: 180px;
+  margin: 5px;
+}
+.search-input {
+  margin-top: 9px;
+  margin-left: 5px;
+  color: #595c5f;
 }
 </style>

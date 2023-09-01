@@ -33,6 +33,5 @@ defineProps({
 @import 'ant-design-vue/lib/grid/style/index.less';
 </style>
 <style lang="scss">
-@import '@UI/assets/scss/theme';
-@import '@UI/assets/scss/error';
+
 </style>

@@ -1,35 +1,36 @@
 <template>
+  <div class="heading">
   <div class="headings">
     <img
       class="cover"
-      src="https://data.pixiz.com/output/user/frame/preview/api/big/8/1/9/1/621918_2adbf.jpg"
+        :src="component.items.Image"
     >
-    <span class="title">John Doe</span>
+      <span class="title">{{ component.items.Title }}</span>
     <div class="section">
       <a-rate
         class="rate "
-        :value="5"
+          :value="component.items.rateValue "
         disabled
       />
-
-      <span class="value"> 01 April 2021</span>
+        <span class="value"> {{ component.items.date }}</span>
     </div>
   </div>
 
   <div>
     <div
       class="card-text"
-      :class="{ 'expanded': isExpanded }"
+        :class="{ expanded: isExpanded }"
     >
-      {{ isExpanded ? text : truncatedText }}
+        {{ isExpanded ?component.items.truncatedText: component.items.text }}
       <div>
         <span
-          v-if="!isExpanded"
+            v-if="isExpanded"
           class="read-more"
           @click="expandText"
         >Read more</span>
       </div>
     </div>
+  </div>
   </div>
 </template>
 <script lang="ts">
@@ -42,25 +43,32 @@ export default {
   required: true
   }
   },
-  data() {
-    return {
-      isExpanded: false,
-      text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique rem nulla delectus",
+  setup() {
+    const rateValue = ref(0);
+    const isExpanded = ref(true);
                             
-      truncatedText: "Lorem ipsum dolor sit"
+    const expandText = () => {
+      isExpanded.value = !isExpanded.value;
     };
-  },
-  methods: {
-    expandText() {
-      this.isExpanded = true;
-    }
+
+    return {
+      rateValue,
+      isExpanded,
+      expandText
+    };
   }
 };
 
 
+
+
+
+
+
+
 </script>
 <style lang="scss" scoped>
-
+.heading{
     .card-text {
   font-size: 1rem;
   line-height: 1.25rem;
@@ -73,34 +81,51 @@ export default {
   max-height: 2.5rem; /* Hauteur maximale de deux lignes */
   position: relative;
   color: grey;
-}
+
 
 .card-text.expanded {
-  max-height: none; /* Affiche le texte complet lorsque la classe 'expanded' est présente */
+  max-height: none; 
 }
 
 .read-more {
-  color: rgb(0, 0, 0);
+  color: rgba(0, 0, 0, 0.789);
   cursor: pointer;
 /* Pour que l'image de couverture se positionne par-dessus les autres éléments */
-             
+font-weight: bold;              
 }
+}
+.headings{
+  padding-top: 0.1px;
 .cover {
-    width: 2vw;
-    height: 2vw;
+    width: 2.2vw;
+    height: 2.2vw;
     border-radius: 50%;
     margin-right:1vw;
+    margin-top:19px;
 }
+.title{
 
+font-weight: bold;
+
+}
+.section{
+  margin-top:-21PX ;
 .rate  {
-    margin-bottom:0.1vw;
-    padding-top: 0.1vw;
+
+    margin-bottom:1vw;
+
     margin-left: 3vw;
   font-size: 12px; /* Modifier la taille de la police pour ajuster la taille des étoiles */
+
+
 }
 .value{
-    font-size: 12px;
     color: grey;
+  font-size: 15px;
+}
+}
+
+}
 }
 
 </style>

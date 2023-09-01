@@ -36,7 +36,7 @@ html body {
   margin: 15px 0 27px;
 
   .ant-row {
-    width: 100%;
+    width: 50%;
   }
 }
 
@@ -44,8 +44,7 @@ html body {
   background-color: $bgWhite;
 
   .header-wrapper {
-    padding: 12px 16px;
-
+     padding: 12px 16px;
     .title {
       margin: 0;
       font-size: 20px;
@@ -159,4 +158,5 @@ html body {
 .select-item {
   border: 1px solid $lightGrey;
   border-radius: 4px;
+  
 }

@@ -29,27 +29,15 @@
       </div>
     </div>
     <div
-      v-if="form && form.length > 0"
+
       class="landscape-items input-localized-mark"
     >
-      <a-form-item
-        v-for="(language, index) in useSortLangs(languagesData).filter((e, i) => (clickBtn && i == i) || i == 0)"
-        :key="index"
-        class="model-item-wrapper"
-        :label="language.isoCode"
-        :rules="useSetRules(index, language.isoCode)"
-        :name="
-          relatedKey
-            ? relatedKey + '.' + name + '[' + form.findIndex((a) => a.isoCode == language.isoCode) + '].value'
-            : name + '[' + form.findIndex((a) => a.isoCode == language.isoCode) + '].value'
-        "
-      >
+  
         <a-upload
           :accept="acceptOnly"
           list-type="picture"
           :action="useNuxtApp().$config.API + useNuxtApp().$config.WS_ADD_MEDIA + $i18n.locale + pathAssetManager"
           :headers="Object.keys(headerUpload).length == 0 ? header : headerUpload"
-          :file-list="file[index].fileList"
           :read-only="readOnly"
           :disabled="disabled"
           :before-upload="(e) => useBeforeUploadFile(e, acceptOnly, errorMessage)"
@@ -62,7 +50,6 @@
           "
         >
           <a-button
-            v-if="!file[index].fileList.length"
             @click="useBeforeUpload"
           >
             <template #icon>
@@ -71,7 +58,7 @@
             {{ $t('upload') }}
           </a-button>
         </a-upload>
-      </a-form-item>
+
     </div>
   </div>
 </template>

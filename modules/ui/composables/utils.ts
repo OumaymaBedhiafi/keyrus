@@ -2,7 +2,7 @@ import { Modal, notification } from 'ant-design-vue';
 import dayjs from 'dayjs';
 
 export const headers: any = {
-  // 'Content-Type': 'application/json',
+  'Content-Type': 'application/json',
 };
 export const errorServer = 'error server';
 
@@ -20,6 +20,12 @@ const iconsMenu: any = {
   icoProducts: icoProducts,
   icoProductsOn: icoProductsOn,
 };
+export const getHeaders = () => {
+  headers['Authorization'] = useLoggedInUserStore().user.config.headers.Authorization;
+  headers['x-userName'] = useLoggedInUserStore().user.data.given_name;
+  return headers;
+};
+
 
 export const iconsNav: any = iconsMenu;
 

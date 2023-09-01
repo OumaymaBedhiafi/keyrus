@@ -1,5 +1,10 @@
 {
   "globals": {
+    "useLoggedInUserStore": "readonly",
+    "userInfo": "readonly",
+    "useConfigAuth": "readonly",
+    "useScreenStore": "readonly",
+    "useApps": "readonly",
     "navIcons": "readonly",
     "useProductsStore": "readonly",
     "useProducts": "readonly",
@@ -11,6 +16,7 @@
     "tableEvents": "readonly",
     "headers": "readonly",
     "errorServer": "readonly",
+    "getHeaders": "readonly",
     "iconsNav": "readonly",
     "useSelectFilterOption": "readonly",
     "useFilters": "readonly",

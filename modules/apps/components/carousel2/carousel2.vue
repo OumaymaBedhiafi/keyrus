@@ -1,8 +1,6 @@
 <template>
   <div>
-    <h2 class="sectionTitle">
-      {{ component.sectionTitle }}
-    </h2>
+   
     <div class="cards-container">
       <a-card 
    
@@ -166,6 +164,7 @@
    overflow: auto;
   scroll-snap-type: x mandatory;
   scroll-snap-align: start;
+  
 }
 
 ::-webkit-scrollbar {

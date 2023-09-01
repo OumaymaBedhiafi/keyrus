@@ -1,6 +1,7 @@
 [
   {
     "organismName": "section",
+    "name": "section",
     "image": "section",
     "sections": [
       {
@@ -57,25 +58,29 @@
   },
 
   {
-    "organismName": "descreption",
-    "sectionTitle": "sectionTitle",
-    "org_name": "ttttt",
-    "image": "descreption",
-    "componentProperty": "element2-property",
-
-    "addedComponents": [],
-    "isSelected": false,
-    "items": {
-      "title": "title",
-      "subtitle": "subtitle",
-      "coverImageUrl": ""
-    }
-  },
-  {
+    "type": "1",
     "organismName": "element2",
     "sectionTitle": "sectionTitle",
     "org_name": "ttttt",
     "image": "temp1",
+    "componentProperty": "elemente2-property",
+
+    "addedComponents": [],
+    "isSelected": false,
+    "items": {
+      "coverImageUrl": "",
+      "title": "title",
+      "subtitle": "subtitle",
+
+      "thumbnailUrl": ""
+    }
+  },
+  {
+    "type": "2",
+    "organismName": "carousel2",
+    "sectionTitle": "sectionTitle",
+    "org_name": "ttttt",
+    "image": "carousell",
     "componentProperty": "element2-property",
 
     "addedComponents": [],
@@ -87,22 +92,98 @@
     }
   },
   {
+    "type": "2",
+    "organismName": "carousel4",
+    "sectionTitle": "sectionTitle",
+    "org_name": "ttttt",
+    "image": "carousell4",
+    "componentProperty": "element2-property",
+
+    "addedComponents": [],
+    "isSelected": false,
+    "items": {
+      "title": "title",
+      "subtitle": "subtitle",
+      "coverImageUrl": [],
+      "thumbnailUrl": []
+    }
+  },
+  {
+    "name": "image",
+    "organismName": "image",
+    "sectionTitle": "sectionTitle",
+    "componentProperty": "image-property",
+    "image": "img1",
+    "addedComponents": [],
+    "isSelected": false,
+    "items": {
+      "coverImageUrl": ""
+    }
+  },
+
+  {
+    "type": "1",
+    "name": "templ",
+    "organismName": "templ",
+    "image": "tem",
+
+    "componentProperty": "templ1-property",
+    "addedComponents": [],
+    "isSelected": false,
+    "items": {
+      "coverImageUrl": "",
+      "Title": "Title",
+      "Subtitle": "Subtitle",
+      "thumbnailUrl": ""
+    }
+  },
+
+  {
+    "type": "2",
+    "organismName": "story",
+    "org_name": "ttttt",
+    "image": "Story",
+    "componentProperty": "element2Property",
+
+    "addedComponents": [],
+    "isSelected": false,
+    "items": {
+      "coverImageUrl": [
+        {
+          "thumbUrl": "",
+          "title": "title",
+          "subtitle": "subtitle"
+        }
+      ]
+    }
+  },
+
+  {
+    "type": "2",
     "organismName": "carousel1",
     "sectionTitle": "sectionTitle",
     "org_name": "ttttt",
-    "image": "card1",
+    "image": "carouseeel1",
 
-    "componentProperty": "element2-property",
+    "componentProperty": "carousel1Property",
 
     "addedComponents": [],
     "isSelected": false,
     "items": {
-      "title": "title",
-      "subtitle": "subtitle",
-      "coverImageUrl": ""
+      "Title1": "Title1",
+      "Subtitle1": "Subtitle1",
+      "thumbnailUrl1": "",
+      "Title2": "Title2",
+      "Subtitle2": "Subtitle2",
+      "thumbnailUrl2": "",
+      "Title3": "Title3",
+      "Subtitle3": "Subtitle3",
+      "thumbnailUrl3": ""
     }
+    
   },
   {
+    "type": "2",
     "organismName": "carousel",
     "sectionTitle": "sectionTitle",
     "org_name": "ttttt",
@@ -112,16 +193,154 @@
     "addedComponents": [],
     "isSelected": false,
     "items": {
+      "coverImageUrl": [
+        {
+          "thumbUrl": "",
+          "title": "title",
+          "subtitle": "subtitle"
+        }
+      ]
+    }
+  },
+
+  {
+    "name": "element1",
+    "organismName": "element1",
+    "image": "cadre",
+    "componentProperty": "Element1Property",
+    "addedComponents": [],
+    "isSelected": false,
+    "items": {
       "title": "title",
-      "subtitle": "subtitle",
+      "Subtitle": "Subtitle",
+      "Subtitle1 ": "Subtitle1",
+      "SubTitle2 ": "SubTitle2",
       "coverImageUrl": ""
     }
   },
   {
-    "organismName": "carousel2",
+    "type": "1",
+    "organismName": "card7",
     "sectionTitle": "sectionTitle",
     "org_name": "ttttt",
-    "image": "carousel1",
+    "image": "imag",
+    "componentProperty": "card7Property",
+
+    "addedComponents": [],
+    "isSelected": false,
+    "items": {
+      "Title": "Title",
+      "Subtitle": "Subtitle",
+      "coverImageUrl": ""
+    }
+  },
+  {
+    "type": "1",
+    "organismName": "descreption",
+    "sectionTitle": "sectionTitle",
+    "org_name": "ttttt",
+    "image": "descreption",
+    "componentProperty": "descreption-property",
+
+    "addedComponents": [],
+    "isSelected": false,
+    "items": {
+      "Title": "Title",
+      "text": "text",
+      "Image": "",
+      "date": "",
+      "rateValue": "4",
+      "truncatedText": ""
+    }
+  },
+  {
+    "type": "1",
+    "organismName": "card5",
+    "sectionTitle": "sectionTitle",
+    "org_name": "ttttt",
+    "image": "carde5",
+    "componentProperty": "card5Property",
+
+    "addedComponents": [],
+    "isSelected": false,
+    "items": {
+      "title": "title",
+      "Subtitle": "subtitle",
+      "coverImageUrl": ""
+    }
+  },
+  {
+    "name": "descreption1",
+    "organismName": "descreption1",
+    "sectionTitle": "sectionTitle",
+    "componentProperty": "descreption1-property",
+    "image": "descreption2",
+    "addedComponents": [],
+    "isSelected": false,
+    "items": {
+      "text": "text",
+
+      "truncatedText": ""
+    }
+  },
+
+  {
+    "type": "1",
+    "organismName": "card2",
+    "sectionTitle": "sectionTitle",
+    "org_name": "ttttt",
+    "image": "card3",
+    "componentProperty": "card2Property",
+
+    "addedComponents": [],
+    "isSelected": false,
+    "items": {
+      "Title": "Title",
+      "SubTitle ": "SubTitle ",
+      "Image": "",
+      "Path": ""
+    }
+  },
+  {
+    "name": "card",
+    "organismName": "card",
+    "componentProperty": "card-property",
+    "image": "carde",
+    "addedComponents": [],
+    "isSelected": false,
+    "items": {
+      "title": "title",
+      "value": "value",
+      "key": "key",
+      "value1": "value",
+      "key2": "key",
+      "coverImageUrl": ""
+    }
+  },
+
+  {
+    "name": "card12",
+    "organismName": "card12",
+    "componentProperty": "card12-property",
+    "sectionTitle": "sectionTitle",
+    "image": "carde12",
+
+    "addedComponents": [],
+    "isSelected": false,
+    "items": {
+      "number_of_tickets_available": 0,
+      "title": "title",
+      "value": "value",
+      "key": "key"
+    }
+  },
+
+  {
+    "type": "1",
+    "organismName": "card15",
+    "sectionTitle": "sectionTitle",
+    "org_name": "ttttt",
+    "image": "cardd15",
     "componentProperty": "element2-property",
 
     "addedComponents": [],
@@ -134,36 +353,29 @@
   },
 
   {
-    "organismName": "ratings",
-    "image": "rating",
-    "addedComponents": []
-  },
-
-  {
-    "organismName": "story",
-    "image": "Story",
-
-    "addedComponents": []
-  },
-  {
-    "name": "templ",
-    "organismName": "templ",
-    "image": "tem",
-
-    "addedComponents": []
-  },
-  {
-    "name": "element1",
-    "organismName": "element1",
-    "image": "cadre",
-
-    "addedComponents": []
-  },
-  {
-    "name": "card",
-    "organismName": "card",
+    "type": "1",
+    "organismName": "card16",
+    "sectionTitle": "sectionTitle",
+    "org_name": "ttttt",
+    "image": "carde14",
     "componentProperty": "element2-property",
-    "icon": ["fas", "stop"],
+
+    "addedComponents": [],
+    "isSelected": false,
+    "items": {
+      "title": "title",
+      "subtitle": "subtitle",
+      "coverImageUrl": ""
+    }
+  },
+
+ 
+
+  {
+    "name": "card14",
+    "organismName": "card14",
+    "componentProperty": "card-property",
+    "image": "cardee",
     "addedComponents": [],
     "isSelected": false,
     "items": {
@@ -173,10 +385,115 @@
     }
   },
   {
+    "type": "1",
+    "organismName": "card9",
+    "sectionTitle": "sectionTitle",
+    "org_name": "ttttt",
+    "image": "cardde",
+    "componentProperty": "card9-property",
+
+    "addedComponents": [],
+    "isSelected": false,
+    "items": {
+      "title": "title",
+      "subtitle": "subtitle",
+      "coverImageUrl": ""
+    }
+  },
+  {
+    "type": "1",
+    "organismName": "card10",
+    "sectionTitle": "sectionTitle",
+    "org_name": "ttttt",
+    "image": "cardd",
+    "componentProperty": "card10-property",
+
+    "addedComponents": [],
+    "isSelected": false,
+    "items": {
+      "title": "title",
+      "key": "key",
+      "value": "value",
+      "coverImageUrl": ""
+    }
+  },
+  {
+    "type": "1",
+    "organismName": "card13",
+    "sectionTitle": "sectionTitle",
+    "org_name": "ttttt",
+    "image": "card13",
+    "componentProperty": "element2-property",
+
+    "addedComponents": [],
+    "isSelected": false,
+    "items": {
+      "title": "title",
+      "subtitle": "subtitle",
+      "coverImageUrl": ""
+    }
+  },
+
+  {
+    "type": "1",
+    "organismName": "card11",
+    "sectionTitle": "sectionTitle",
+    "org_name": "ttttt",
+    "image": "carddee",
+    "componentProperty": "element2-property",
+
+    "addedComponents": [],
+    "isSelected": false,
+    "items": {
+      "title": "title",
+      "subtitle": "subtitle",
+      "coverImageUrl": ""
+    }
+  },
+  {
+    "type": "1",
+    "organismName": "card4",
+    "sectionTitle": "sectionTitle",
+    "org_name": "ttttt",
+    "image": "cards",
+    "componentProperty": "element2-property",
+
+    "addedComponents": [],
+    "isSelected": false,
+    "items": {
+      "title": "title",
+      "subtitle": "subtitle",
+      "coverImageUrl": ""
+    }
+  },
+
+  {
+    "organismName": "card1",
+    "sectionTitle": "sectionTitle",
+    "org_name": "ttttt",
+    "image": "cardd4",
+    "componentProperty": "element2-property",
+
+    "isSelected": false,
+    "items": {
+      "title": "title",
+      "subtitle": "subtitle",
+      "coverImageUrl": ""
+    }
+  },
+
+  {
+    "type": "1",
+    "organismName": "ratings",
+    "image": "rating",
+    "addedComponents": []
+  },
+
+  {
     "name": "Button",
     "organismName": "Button",
     "componentProperty": "button-property",
-    "icon": ["fas", "stop"],
+    "image": "button1",
     "addedComponents": [],
     "isSelected": false,
     "items": {
@@ -213,78 +530,22 @@
       "type": "text"
     }
   },
-
   {
-    "name": "Input",
-    "organismName": "input",
-    "componentProperty": "button-property",
-    "icon": ["fas", "image"],
+    "type": "1",
+    "organismName": "text",
+    "sectionTitle": "sectionTitle",
+    "org_name": "ttttt",
+    "image": "text",
+    "componentProperty": "element2-property",
+
     "addedComponents": [],
+    "isSelected": false,
     "items": {
-      "label": "Input label",
-      "field_name": null,
-      "is_required": false,
-      "show_label": true,
-      "placeholder_text": "Placeholder text"
-    },
-    "deletable": true,
-    "type": "text",
-    "isSelected": false
-  },
-
-  {
-    "organismName": "section",
-    "sections": [
-      {
-        "name": "2 columns",
-        "image": "iconTest",
-        "column": "2",
-        "addedComponents": [[], []],
-        "deletable": true,
-        "span": "12"
-      },
-      {
-        "name": "3 columns",
-        "organismName": "section",
-        "image": "icon3",
-        "column": "3",
-        "addedComponents": [[], [], []],
-        "deletable": true,
-        "span": "8"
-      },
-      {
-        "name": "4 columns",
-        "organismName": "section",
-        "image": "icon4",
-        "column": "4",
-        "addedComponents": [[], [], [], []],
-        "deletable": true,
-        "span": "6"
-      },
-      {
-        "name": "5 columns",
-        "organismName": "section",
-        "image": "icon5",
-        "column": "5",
-        "addedComponents": [[], [], [], [], []],
-        "deletable": true
-      },
-      {
-        "name": "2 Columns (2:1)",
-        "organismName": "section",
-        "image": "iconcol1",
-
-        "column": "2-1-3",
-        "addedComponents": [[], []],
-        "deletable": true
-      },
-      {
-        "name": "2 Columns (1:2)",
-        "image": "iconcol3",
-        "column": "2-3-1",
-        "addedComponents": [[], []],
-        "deletable": true
-      }
-    ]
+      "title": "title",
+      "subtitle": "subtitle",
+      "coverImageUrl": "",
+      "NombreT": "",
+      "Nombre  ": ""
+    }
   }
 ]

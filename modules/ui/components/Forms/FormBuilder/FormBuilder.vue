@@ -260,11 +260,11 @@
                 list-type="picture"
                 :action="url + fieldItem.prefix"
                 :headers="headersUpload"
-                :file-list="file[fieldItem.fieldName].fileList"
+                 v-model:file-list="file[fieldItem.fieldName]"
                 :before-upload="(e) => useBeforeUploadFile(e, fieldItem.accept, fieldItem.error)"
                 @change="useChangeFile($event, fieldItem.fieldName)"
               >
-                <a-button v-if="file[fieldItem.fieldName].fileList.length == 0">
+                <a-button v-if="file[fieldItem.fieldName].length == 0">
                   <template #icon>
                     <upload-outlined />
                   </template>
@@ -303,6 +303,39 @@
               </client-only>
             </a-form-item>
             <!-- END OF TEXTEDITOR NOT LOCALIZED -->
+
+            <!-- MULTI UPLOAD NOT localized  -->
+            <a-form-item
+              v-if="fieldItem.fieldType == 'MULTIUPLOAD' && !fieldItem.isLocalized"
+              :key="fieldItem.fieldName + index"
+              :label="fieldItem.label"
+              :rules="useSetRule(fieldItem.fieldName, fieldItem)"
+              :name="useSetName(fieldItem)"
+              :class="['form-item-' + fieldItem.fieldName, fieldItem.wrapperClass]"
+              :label-col="fieldItem.labelCol"
+              :wrapper-col="fieldItem.wrapperCol"
+            >
+              {{ imageListUrl }}
+              <a-upload
+                v-model:file-list="file[fieldItem.fieldName]"
+                :accept="fieldItem.accept"
+                list-type="picture"
+                :action="url + fieldItem.prefix"
+                :headers="headersUpload"
+                :before-upload="(e) => useBeforeUploadFile(e, fieldItem.accept, fieldItem.error)"
+                multiple
+                @change="useChangeFile($event, fieldItem.fieldName)"
+              >
+                <a-button>
+                  <template #icon>
+                    <upload-outlined />
+                  </template>
+                  {{ $t('upload') }}
+                </a-button>
+              </a-upload>
+            </a-form-item>
+
+            <!-- END of MULTI UPLOAD NOT localized -->
 
             <!-- TAGS NOT LOCALIZED -->
             <a-form-item
@@ -436,29 +469,60 @@ import thumbExcel from '@UI/assets/img/thumbexcel.svg';
 import thumbPdf from '@UI/assets/img/pdfThumb.svg';
 import thumbDoc from '@UI/assets/img/docThumb.svg';
 import { formBuilderProps } from './props/formBuilder.props';
+import type { UploadProps } from 'ant-design-vue';
+
 const props: any = defineProps(formBuilderProps);
 const FormGroup = defineAsyncComponent(() => import('./FormGroup.vue'));
 const formElts: any = ref([]);
 const emit: any = defineEmits(formEvents(null).events);
-const { useClearValidate, useFormDataChange, useTextEditorFileUpload }: any = formEvents(emit);
+const { useClearValidate, useFormDataChange, useTextEditorFileUpload, fileValueChanged }: any = formEvents(emit);
 let formReactiveKey: any = {};
 const url = useNuxtApp().$config.API + useNuxtApp().$config.WS_ADD_MEDIA + useNuxtApp().$i18n.locale.value;
 const file: any = ref({});
 const headersUpload = {
   authorization: decodeURIComponent(useNuxtApp().$auth.token),
+  'x-tenantId': 'tn',
+  'x-lang': useNuxtApp().$i18n.locale.value,
+  'x-userName': useLoggedInUserStore().user.data.given_name,
 };
+
 onMounted(() => {
   useInitForm();
 });
+
+// const useChangeFile1 = (event: any, name: any) => {
+//   /** Limit the number of uploaded files to one file */
+//   file.value[name].fileList = event.fileList;
+//   file.value[name].fileList = file.value[name].fileList.slice(-1);
+//   if (event.file.status === 'done') {
+//     let extension = file.value[name].fileList[0].name.match(/\.[0-9a-z]+$/i)[0];
+//     file.value[name].fileList[0].thumbUrl = useCustomThumbnail(extension, file.value[name].fileList[0].thumbUrl);
+//     useFormDataChange(event.file.response.url, name);
+//   }
+//   else if (event.file.status === 'error') {
+//     useOpenNotification(useNuxtApp().$i18n.t('uploadError'), 'error');
+//   }
+//   else { useFormDataChange('', name); }
+// };
 /** populate upload file */
 const useChangeFile = (event: any, name: any) => {
   /** Limit the number of uploaded files to one file  */
-  file.value[name].fileList = event.fileList;
-  file.value[name].fileList = file.value[name].fileList.slice(-1);
-  if (event.file.status === 'done') {
-    let extension = file.value[name].fileList[0].name.match(/\.[0-9a-z]+$/i)[0];
-    file.value[name].fileList[0].thumbUrl = useCustomThumbnail(extension, file.value[name].fileList[0].thumbUrl);
-    useFormDataChange(event.file.response.url, name);
+
+  //file.value[name].fileList = event.fileList;
+
+  //file.value[name].fileList = file.value[name].fileList.slice(-1);
+  console.log('ffffffffffffffff', file.value[name]);
+
+  if (file.value[name][0].status === 'done') {
+    let imageListUrl = [];
+    for (let i in file.value[name]) {
+     
+      let extension = file.value[name][i].name.match(/\.[0-9a-z]+$/i)[0];
+      file.value[name][i].thumbUrl = useCustomThumbnail(extension, file.value[name][i].thumbUrl);
+      imageListUrl.push({ thumbUrl: file.value[name][i].response.url, title: '', subtitle: '' });
+    }
+    useFormDataChange(imageListUrl, name);
+    //   emit('fileValueChanged', file.value);
   } else if (event.file.status === 'error') {
     useOpenNotification(useNuxtApp().$i18n.t('uploadError'), 'error');
   } else {
@@ -477,6 +541,7 @@ const useBeforeUploadFile = (fileDate: any, accept: any, errorMessage: any) => {
   }
   return isValidFile;
 };
+
 const useInitForm = () => {
   props.formModel.forEach((element: any) => {
     let defaultValue: any = {};
@@ -484,8 +549,12 @@ const useInitForm = () => {
       defaultValue.fieldValue = element.defaultValue;
     }
     if (element.fieldType == 'UPLOAD') {
-      file.value[element.fieldName] = { fileList: [] };
+      file.value[element.fieldName] = ref<UploadProps['fileList']>([]);
     }
+    if (element.fieldType == 'MULTIUPLOAD') {
+      file.value[element.fieldName] = ref<UploadProps['fileList']>([]);
+    }
+
     if (element.fieldType == 'CHECKBOX' && !element.defaultValue) {
       element.defaultValue = false;
     }
@@ -495,13 +564,17 @@ const useInitForm = () => {
   });
   /** dyamic build reactive key */
   useFormDataChange(formReactiveKey);
+  console.log('pppppppppp1', props.data);
   if (props.data) {
+    console.log('ccccccccz');
+    console.log('ppppppppp2', props.data);
     useSetDataValues();
   }
 };
 
 /** populate fields values */
 const useSetDataValues = () => {
+  console.log('nnnnnn');
   Object.keys(props.data).forEach((key: string, idx: number) => {
     let oData: any = formElts.value.find((e: any) => e.fieldName == key);
     if (oData) {

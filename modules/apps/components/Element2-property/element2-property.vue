@@ -1,165 +1,209 @@
 <template>
-  <a-row class="mb-2">
-    <a-col
-      class="mb-2"
-      :span="24"
-    >
-      <a-form-item label="sectionTitle">
-        <a-input
-          v-model:value="component.sectionTitle"
-          size="small"
-        />
-      </a-form-item>
-    </a-col>
-  </a-row>
-  <a-row class="mb-2">
-    <a-col
-      class="mb-2"
-      :span="24"
-    >
-      <a-form-item label="title">
-        <a-input
-          v-model:value="component.items.title"
-          size="small"
-        />
-      </a-form-item>
-    </a-col>
-  </a-row>
-       
-  <a-row class="mb-2">
-    <a-col
-      class="mb-2"
-      :span="24"
-    >
-      <a-form-item label="subtitle">
-        <a-input
-          v-model:value="component.items.subtitle"
-          size="small"
-        />
-      </a-form-item>
-    </a-col>
-  </a-row>
-  <a-upload
-    v-model:file-list="fileList"
-    name="avatar"
-    list-type="picture-card"
-    class="avatar-uploader"
-    :show-upload-list="false"
-    action="http://localhost:8081/assets/svg"
-    :before-upload="beforeUpload"
-    @change="handleChange"
-  >
-    <img
-      v-if="coverImageUrl"
-      :src="component.items.coverImageUrl"
-    >
-    <div v-else>
-      <loading-outlined v-if="loading" />
-      <plus-outlined v-else />
-      <div class="ant-upload-text">
-        Upload
-      </div>
+  <div>
+    <button @click="openPopup">
+      Open Popup
+    </button>
+    <div class="photos">
+      <draggable
+        :list="formPayload.Image"
+        group="carousel"
+      >
+        <template #item="{ element }">
+          <a-card
+            :key="element"
+            class="photo"
+          >
+            <img
+              class="photo-item"
+              :src="element.thumbUrl"
+              alt="Photo"
+            >
+          </a-card>
+        </template>
+      </draggable>
     </div>
-  </a-upload>
+
+    <a-modal
+      :visible="isPopupVisible"
+      title="Upload Photos"
+      width="800px"
+      centered="true"
+      @ok="ok"
+      @cancel="useHideModal"
+    >
+      <div class="images-container">
+        <draggable
+          :list="formPayload.Image"
+          group="carousel"
+        >
+          <template #item="{ element }">
+            <a-card class="container">
+              <div>
+                <img
+                  class="photo-item"
+                  :src="element.thumbUrl"
+                  alt="Photo"
+                >
+                <div class="hading">
+                  <!-- <span>Title:</span> -->
+                  <a-input
+                    v-model:value="element.title"
+                    class="title"
+                  />
+                  <!-- <span>Sub Title:</span>  -->
+                  <a-input
+                    v-model:value="element.subtitle"
+                    class="sub-title"
+                  />
+                  <!-- <a-input v-model:value="element.title" class="title">
+                  Title:
+                </a-input> -->
+                </div>
+              </div>
+            </a-card>
+          </template>
+        </draggable>
+      </div>
+      <a-form layout="horizontal">
+        <ui-templates-form>
+          <template #form>
+           
+            <lazy-ui-forms-form-builder
+              :langs="langs"
+              :rules="rules"
+              :form-model="formImage"
+              @click="brn"
+              @updateData="useFormDataChange"
+              @clearValidate="useClearValidate"
+            />
+          </template>
+        </ui-templates-form>
+      </a-form>
+    </a-modal>
+  </div>
 </template>
+<script lang="ts" setup>
+const { rules } = useApps();
+import form from '../../assets/data/formImage.json';
+const emit = defineEmits([...formEvents(null).events, 'update:block']);
+const { useFormDataChange, useClearValidate } = formEvents(emit);
 
-<script lang="ts">
-import nav from '~~/assets/data/nav.json';
-import { PlusOutlined, LoadingOutlined } from '@ant-design/icons-vue';
-import { message } from 'ant-design-vue';
-import { defineComponent, ref } from 'vue';
-import  type { UploadChangeParam, UploadProps } from 'ant-design-vue';
+const formImage = useTranslate(form);
 
-function getBase64(img: Blob, callback: (base64Url: string) => void) {
-  const reader = new FileReader();
-  reader.addEventListener('load', () => callback(reader.result as string));
-  reader.readAsDataURL(img);
-}
-
-export default defineComponent({
-    components: {
-    LoadingOutlined,
-    PlusOutlined,
-   
+const props = defineProps({
+  block: {
+    type: Object,
+    default: () => ({}),
+    required: true,
   },
- 
-  props: {
-    block: {
-      type: Object,
-      default: () => ({}),
-      required: true
-    }
+  formPayload: {
+    type: Object,
+    default: () => ({}),
+    required: true,
   },
-  emits: ['update:block'],
-
-  
-    
-
-
-  setup(props) {
-      const component = computed({
-          get: () => props.block,
-          set: () =>"",
-          
-      });
-      const fileList = ref([]);
-    const loading = ref<boolean>(false);
-    const coverImageUrl = ref<string>('');
-
-    const handleChange = (info: UploadChangeParam) => {
-      if (info.file.status === 'uploading') {
-        loading.value = true;
-        return;
-      }
-      if (info.file.status === 'done') {
-        // Get this url from response in real world.
-        getBase64(info.file.originFileObj, (base64Url: string) => {
-          coverImageUrl.value = base64Url;
-          loading.value = false;
-        });
-      }
-      if (info.file.status === 'error') {
-        loading.value = false;
-        message.error('upload error');
-      }
-    };
-
-    const beforeUpload = (file: UploadProps['fileList'][number]) => {
-      const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
-      if (!isJpgOrPng) {
-        message.error('You can only upload JPG file!');
-      }
-      const isLt2M = file.size / 1024 / 1024 < 2;
-      if (!isLt2M) {
-        message.error('Image must smaller than 2MB!');
-      }
-      return isJpgOrPng && isLt2M;
-    };
-      return { component,nav,fileList,
-      loading,
-      coverImageUrl,
-      handleChange,
-      beforeUpload,}
-    
-
-  }
-    
-
-
 });
-</script> 
-<style scoped>
-.avatar-uploader > .ant-upload {
-  width: 50px;
-  height: 50px;
-}
-.ant-upload-select-picture-card i {
-  font-size: 32px;
-  color: #999;
+
+// const emit = defineEmits('update:block');
+const isPopupVisible = ref(false);
+
+const component = computed({
+  get() {
+    return props.block;
+  },
+  set(value) {
+    emit('update:block', value);
+  },
+});
+
+const localPayload = ref(props.formPayload);
+watch(
+  () => props.formPayload,
+  (newValue) => {
+    component.value.items.coverImageUrl = newValue['Image'];
+    component.value.items.title = newValue['element2Title'];
+    component.value.items.thumbnailUrl = newValue['thumbnailUrl'];
+    component.value.items.subtitle = newValue['element2SubTitle'];
+  },
+  { deep: true }
+);
+const brn = () => {
+  if (component.value.items.coverImageUrl !== undefined) { localPayload.value.Image =
+component.value.items.coverImageUrl[0]["thumbUrl"]; }
+
+  localPayload.value.element2SectionTitle = component.value.items.title;
+  localPayload.value.element2SectionTitle = component.value.items.subtitle;
+
+  localPayload.value.thumbnailUrl = component.value.items.thumbnailUrl;
+};
+
+const openPopup = () => {
+  isPopupVisible.value = true;
+};
+
+const ok = () => {
+  isPopupVisible.value = false;
+};
+
+const useHideModal = () => {
+  isPopupVisible.value = false;
+};
+</script>
+
+<style lang="scss" scoped>
+.photos {
+  margin: 1px;
+border: 1px solid lightgray;
+
+
+
+  .photo {
+    width: 50px;
+    height: 40px;
+    display: inline-block; 
+    margin: 2px;
+
+    .photo-item {
+      margin-right: 8px;
+      margin-bottom: 8px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
 }
 
-.ant-upload-select-picture-card .ant-upload-text {
-  margin-top: 8px;
-  color: #666;
+.images-container
+ {
+  /* overflow-y: scroll; */
+}
+.container {
+  width: 130px;
+  height: 173px;
+  display: inline-block;
+  margin: 5px;
+
+  .photo-item {
+    margin-right: 8px;
+    margin-bottom: 8px;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60%;
+  }
+  .hading {
+    position: absolute;
+    top: 61%;
+    left: 0%;
+    width: 100%;
+
+    .title {
+    }
+    .sub-title {
+    }
+  }
 }
 </style>
