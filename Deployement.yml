@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: appbuilder-keycloak-service
-        image: oumaima12/keycloak_service:22.0.1
+        image: oumaima12/keycloak-service:22.0.1
         ports:
         - containerPort: 8096
