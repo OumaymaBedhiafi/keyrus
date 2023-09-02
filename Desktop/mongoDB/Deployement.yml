@@ -25,3 +25,16 @@ spec:
         - name: MONGO_INITDB_ROOT_PASSWORD
           value: root
 
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: appbuilder-mongodb-service
+spec:
+  selector:
+    app: appbuilder-mongodb
+  ports:
+  - protocol: TCP
+    port: 27017
+    targetPort: 27017
+
