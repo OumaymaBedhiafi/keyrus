@@ -19,3 +19,16 @@ spec:
         image: oumaima12/upload-image-service
         ports:
         - containerPort: 8099
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: appbuilder-upload-service-service
+spec:
+  selector:
+    app: appbuilder-upload-service
+  ports:
+  - protocol: TCP
+    port: 8099
+    targetPort: 8099
