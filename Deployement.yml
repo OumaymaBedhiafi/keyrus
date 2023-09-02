@@ -19,3 +19,16 @@ spec:
         image: oumaima12/keycloak-service:22.0.1
         ports:
         - containerPort: 8096
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: appbuilder-keycloak-service-service
+spec:
+  selector:
+    app: appbuilder-keycloak-service
+  ports:
+  - protocol: TCP
+    port: 8096
+    targetPort: 8096
