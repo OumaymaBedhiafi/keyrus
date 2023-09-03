@@ -19,6 +19,12 @@ spec:
         image: oumaima12/keycloak-service:22.0.1
         ports:
         - containerPort: 8096
+        env:  # Add environment variables here
+        - name: KEYCLOAK_ADMIN
+          value: admin
+        - name: KEYCLOAK_ADMIN_PASSWORD
+          value: admin
+
 
 ---
 apiVersion: v1
