@@ -1,4 +1,4 @@
-apiVersion: apps/v1
+clapiVersion: apps/v1
 kind: Deployment
 metadata:
   name: appbuilder-keycloak-service
@@ -46,7 +46,7 @@ metadata:
   name: appbuilder-keycloak-ingress
 spec:
   rules:
-    - host: your.hostname.com  # Replace with your actual hostname
+    - host: keycloak.com 
       http:
         paths:
           - path: /
