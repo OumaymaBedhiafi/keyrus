@@ -1,4 +1,4 @@
-clapiVersion: apps/v1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: appbuilder-keycloak-service
@@ -20,13 +20,11 @@ spec:
         args: ["start-dev"]
         ports:
         - containerPort: 8080
-        env: 
+        env:
         - name: KEYCLOAK_ADMIN
           value: admin
         - name: KEYCLOAK_ADMIN_PASSWORD
           value: admin
-
-
 ---
 apiVersion: v1
 kind: Service
@@ -40,7 +38,6 @@ spec:
     port: 8080
     targetPort: 8080
 ---
-
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -57,4 +54,3 @@ spec:
                 name: appbuilder-keycloak-service-service
                 port:
                   number: 8080
-
