@@ -39,3 +39,21 @@ spec:
   - protocol: TCP
     port: 8080
     targetPort: 8080
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: appbuilder-keycloak-ingress
+spec:
+  rules:
+    - host: your.hostname.com  # Replace with your actual hostname
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: appbuilder-keycloak-service-service
+                port:
+                  number: 8080
+
