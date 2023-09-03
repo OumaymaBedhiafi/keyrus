@@ -18,8 +18,8 @@ spec:
       - name: appbuilder-keycloak-service
         image: oumaima12/keycloak-service:22.0.1
         ports:
-        - containerPort: 8096
-        env:  # Add environment variables here
+        - containerPort: 8080
+        env: 
         - name: KEYCLOAK_ADMIN
           value: admin
         - name: KEYCLOAK_ADMIN_PASSWORD
@@ -36,5 +36,5 @@ spec:
     app: appbuilder-keycloak-service
   ports:
   - protocol: TCP
-    port: 8096
-    targetPort: 8096
+    port: 8080
+    targetPort: 8080
