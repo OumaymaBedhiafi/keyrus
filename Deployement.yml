@@ -17,7 +17,7 @@ spec:
       containers:
       - name: appbuilder-keycloak-service
         image: oumaima12/keycloak-service:22.0.1
-        args: ["start-dev"]
+        args: ["-e", "KEYCLOAK_ADMIN=admin", "-e", "KEYCLOAK_ADMIN_PASSWORD=admin", "--spi-login-protocol-openid-connect-legacy-logout-redirect-uri=true", "start-dev"]
         ports:
         - containerPort: 8080
         env:
