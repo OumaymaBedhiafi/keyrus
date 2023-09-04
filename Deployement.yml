@@ -5,7 +5,7 @@ metadata:
   labels:
     app: appbuilder-keycloak-service
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: appbuilder-keycloak-service
@@ -21,8 +21,6 @@ spec:
         ports:
         - containerPort: 8080
         env:
-        - name: KC_HOSTNAME
-          value: http://keycloak.com/
         - name: KEYCLOAK_ADMIN
           value: admin
         - name: KEYCLOAK_ADMIN_PASSWORD
