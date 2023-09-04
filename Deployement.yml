@@ -21,6 +21,8 @@ spec:
         ports:
         - containerPort: 8080
         env:
+        - name: KC_HOSTNAME
+          value: https://keycloak.com/
         - name: KEYCLOAK_ADMIN
           value: admin
         - name: KEYCLOAK_ADMIN_PASSWORD
