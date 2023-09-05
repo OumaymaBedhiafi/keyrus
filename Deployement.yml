@@ -18,7 +18,7 @@ spec:
       - name: appbuilder-upload-service
         image: oumaima12/upload-image-service
         ports:
-        - containerPort: 8096
+        - containerPort: 8080
 
 ---
 apiVersion: v1
@@ -30,5 +30,5 @@ spec:
     app: appbuilder-upload-service
   ports:
   - protocol: TCP
-    port: 8096
-    targetPort: 8096
+    port: 8080
+    targetPort: 8080
