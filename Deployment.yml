@@ -5,7 +5,7 @@ metadata:
   labels:
     app: appbuilder-screen-service
 spec:
-  replicas: 2  # Adjust the number of replicas as needed
+  replicas: 1
   selector:
     matchLabels:
       app: appbuilder-screen-service
@@ -18,7 +18,7 @@ spec:
       - name: appbuilder-screen-service
         image: oumaima12/screen-service
         ports:
-        - containerPort: 8098
+        - containerPort: 9880
 ---
 apiVersion: v1
 kind: Service
@@ -29,5 +29,5 @@ spec:
     app: appbuilder-screen-service
   ports:
   - protocol: TCP
-    port: 8098
-    targetPort: 8098
+    port: 9880
+    targetPort: 9880
