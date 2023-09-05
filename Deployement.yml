@@ -27,6 +27,13 @@ spec:
           value: admin
         - name: KEYCLOAK_ADMIN_PASSWORD
           value: admin
+        volumeMounts:
+        - name: keycloak-data-volume
+          mountPath: /opt/jboss/keycloak/standalone/data
+      volumes:
+      - name: keycloak-data-volume
+        hostPath:
+          path: /home/minikub/keycloak-data
 ---
 apiVersion: v1
 kind: Service
