@@ -5,7 +5,7 @@ metadata:
   labels:
     app: appbuilder-mongodb
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: appbuilder-mongodb
