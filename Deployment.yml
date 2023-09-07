@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: appbuilder-screen-service
-        image: oumaima12/screen-service:v3
+        image: oumaima12/screen-service:V3
         ports:
         - containerPort: 9882
 ---
