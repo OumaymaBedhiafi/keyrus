@@ -75,7 +75,7 @@
 <repository>
 <id>deploymentRepo</id>
 <name>Nexus Repository</name>
-<url>http://192.168.234.208:8081/repository/maven-releases/</url>
+<url>http://192.168.234.208:8081/repository/application-microservice/</url> 
 </repository>
 </distributionManagement>
 
