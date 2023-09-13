@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: appbuilder-application-service
-        image: oumaima12/application_service:v9
+        image: oumaima12/application_service:v10
         ports:
         - containerPort: 9882
 ---
