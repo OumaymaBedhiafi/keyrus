@@ -117,7 +117,7 @@
          <repository>
          <id>deploymentRepo</id>
          <name>Nexus Repository</name>
-         <url>http://192.168.234.212:8081/repository/application-microservice/</url> 
+         <url>http://192.168.234.212:8081/repository/upload-microservice/</url> 
          </repository>
          </distributionManagement>
          
