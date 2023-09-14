@@ -75,7 +75,7 @@
 <repository>
 <id>deploymentRepo</id>
 <name>Nexus Repository</name>
-<url>http://192.168.234.210:8081/repository/screen-microservice/</url> 
+<url>http://192.168.234.212:8081/repository/screen-microservice/</url> 
 </repository>
 </distributionManagement>
 
